@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>vue基础知识整理 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="模板语法 文本插值 v-html=”html”,HTMl输出 v-bind —-HTML属性插值.  eg:按钮   JavaScript表达式—直接在mustache,属性插值里面使用各种表达式(加减乘除,三元运算,方法调用等) 过滤器(有点类似shell命令中的管道,可以定义过滤器来对原始值进行变化) 指令—v-bind,v-on系列(dom事件的监听),v-for,v-model等  vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue基础知识整理">
+<meta property="og:url" content="http://yoursite.com/2018/01/25/vue基础知识整理/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="模板语法 文本插值 v-html=”html”,HTMl输出 v-bind —-HTML属性插值.  eg:按钮   JavaScript表达式—直接在mustache,属性插值里面使用各种表达式(加减乘除,三元运算,方法调用等) 过滤器(有点类似shell命令中的管道,可以定义过滤器来对原始值进行变化) 指令—v-bind,v-on系列(dom事件的监听),v-for,v-model等  vue">
+<meta property="og:image" content="c:/Users/22/Pictures/Camera%20Roll/vue生命周期.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/25/vue基础知识整理/imgs/修改公共路径.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/25/vue基础知识整理/imgs/修改图片路径.jpg">
+<meta property="og:updated_time" content="2018-01-25T03:26:55.344Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue基础知识整理">
+<meta name="twitter:description" content="模板语法 文本插值 v-html=”html”,HTMl输出 v-bind —-HTML属性插值.  eg:按钮   JavaScript表达式—直接在mustache,属性插值里面使用各种表达式(加减乘除,三元运算,方法调用等) 过滤器(有点类似shell命令中的管道,可以定义过滤器来对原始值进行变化) 指令—v-bind,v-on系列(dom事件的监听),v-for,v-model等  vue">
+<meta name="twitter:image" content="c:/Users/22/Pictures/Camera%20Roll/vue生命周期.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-vue基础知识整理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/25/vue基础知识整理/" class="article-date">
+  <time datetime="2018-01-25T03:26:24.000Z" itemprop="datePublished">2018-01-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue基础知识整理
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="模板语法"><a href="#模板语法" class="headerlink" title="模板语法"></a>模板语法</h4><ul>
+<li>文本插值</li>
+<li>v-html=”html”,HTMl输出</li>
+<li>v-bind —-HTML属性插值. <ul>
+<li>eg:<button v-bind:disabled="someDynamicCondition">按钮</button></li>
+</ul>
+</li>
+<li>JavaScript表达式—直接在mustache,属性插值里面使用各种表达式(加减乘除,三元运算,方法调用等)</li>
+<li>过滤器(有点类似shell命令中的管道,可以定义过滤器来对原始值进行变化)</li>
+<li>指令—v-bind,v-on系列(dom事件的监听),v-for,v-model等</li>
+</ul>
+<h4 id="vue实例"><a href="#vue实例" class="headerlink" title="vue实例"></a>vue实例</h4><p>实际上是viewmodel(数据+函数),都是通过构造函数Vue创建的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    var data = &#123; a: 1 &#125;</span><br><span class="line">var vm = new Vue(&#123;</span><br><span class="line">  el: &apos;#example&apos;,</span><br><span class="line">  data: data,</span><br><span class="line">  created: function () &#123;</span><br><span class="line">    // `this` 指向 vm 实例</span><br><span class="line">    console.log(&apos;a is: &apos; + this.a)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.$data === data // -&gt; true</span><br><span class="line">vm.$el === document.getElementById(&apos;example&apos;) // -&gt; true</span><br><span class="line">// $watch 是一个实例方法</span><br><span class="line">vm.$watch(&apos;a&apos;, function (newVal, oldVal) &#123;</span><br><span class="line">  // 这个回调会在 `vm.a` 改变的时候触发</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h5 id="vue的生命周期"><a href="#vue的生命周期" class="headerlink" title="vue的生命周期"></a>vue的生命周期</h5><ul>
+<li>created</li>
+<li>mounted</li>
+<li>updated</li>
+<li>destoryed<br><em>所有方法都被call时,this都指向所在的vue实例</em><br>生命周期图如下图所示<br><img src="C:\Users\22\Pictures\Camera Roll\vue生命周期.png" alt="vue生命周期图"></li>
+</ul>
+<h4 id="计算属性和监听器"><a href="#计算属性和监听器" class="headerlink" title="计算属性和监听器"></a>计算属性和监听器</h4><h5 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h5><p>其实就是一个需要计算的getter<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;example&quot;&gt;</span><br><span class="line">  &lt;p&gt;Original message: &quot;&#123;&#123; message &#125;&#125;&quot;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;Computed reversed message: &quot;&#123;&#123; reversedMessage &#125;&#125;&quot;&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">var vm = new Vue(&#123;</span><br><span class="line">  el: &apos;#example&apos;,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: &apos;Hello&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    // 一个 computed getter</span><br><span class="line">    reversedMessage: function () &#123;</span><br><span class="line">      // `this` 指向 vm 实例</span><br><span class="line">      return this.message.split(&apos;&apos;).reverse().join(&apos;&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>和使用method的区别在于,计算属性根据他的依赖被缓存,即如果message没有被修改,下次get不会进行重复计算,而method则每次调用都会重新计算.这也意味着如Date.now()这样返回的计算属性会永远得不到更新.</p>
+<h5 id="Setter"><a href="#Setter" class="headerlink" title="Setter"></a>Setter</h5><p>默认情况下,计算属性只有一个getter,我们也可以给它加上setter:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">   computed: &#123;</span><br><span class="line">      fullName: &#123;</span><br><span class="line">        // getter</span><br><span class="line">        get: function () &#123;</span><br><span class="line">          return this.firstName + &apos; &apos; + this.lastName</span><br><span class="line">        &#125;,</span><br><span class="line">        // setter</span><br><span class="line">        set: function (newValue) &#123;</span><br><span class="line">          var names = newValue.split(&apos; &apos;)</span><br><span class="line">          this.firstName = names[0]</span><br><span class="line">          this.lastName = names[names.length - 1]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">&#125; </span><br><span class="line">如此,当调用vm.fullName=&quot;Mark&quot;时,firstName和lastName都会被更新</span><br></pre></td></tr></table></figure></p>
+<h4 id="监听器"><a href="#监听器" class="headerlink" title="监听器"></a>监听器</h4><p>vue的watch也可以用来做类似的事<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    &lt;div id=&quot;demo&quot;&gt;&#123;&#123; fullName &#125;&#125;&lt;/div&gt;</span><br><span class="line">var vm = new Vue(&#123;</span><br><span class="line">  el: &apos;#demo&apos;,</span><br><span class="line">  data: &#123;</span><br><span class="line">    firstName: &apos;Foo&apos;,</span><br><span class="line">    lastName: &apos;Bar&apos;,</span><br><span class="line">    fullName: &apos;Foo Bar&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    firstName: function (val) &#123;</span><br><span class="line">      this.fullName = val + &apos; &apos; + this.lastName</span><br><span class="line">    &#125;,</span><br><span class="line">    lastName: function (val) &#123;</span><br><span class="line">      this.fullName = this.firstName + &apos; &apos; + val</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>对比一下计算属性版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    var vm = new Vue(&#123;</span><br><span class="line">  el: &apos;#demo&apos;,</span><br><span class="line">  data: &#123;</span><br><span class="line">    firstName: &apos;Foo&apos;,</span><br><span class="line">    lastName: &apos;Bar&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    fullName: function () &#123;</span><br><span class="line">      return this.firstName + &apos; &apos; + this.lastName</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>看上去简单了很多,那要watcher干啥呢<br>主要应用场景是异步或耗时操作:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">    &lt;script&gt;</span><br><span class="line">var watchExampleVM = new Vue(&#123;</span><br><span class="line">  el: &apos;#watch-example&apos;,</span><br><span class="line">  data: &#123;</span><br><span class="line">    question: &apos;&apos;,</span><br><span class="line">    answer: &apos;I cannot give you an answer until you ask a question!&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    // 只要 question 改变，这个函数就会执行</span><br><span class="line">    question: function (newQuestion) &#123;</span><br><span class="line">      this.answer = &apos;Waiting for you to stop typing...&apos;</span><br><span class="line">      this.getAnswer()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    // _.debounce is a function provided by lodash to limit how</span><br><span class="line">    // often a particularly expensive operation can be run.</span><br><span class="line">    // In this case, we want to limit how often we access</span><br><span class="line">    // yesno.wtf/api, waiting until the user has completely</span><br><span class="line">    // finished typing before making the ajax request. To learn</span><br><span class="line">    // more about the _.debounce function (and its cousin</span><br><span class="line">    // _.throttle), visit: Lodash Documentation</span><br><span class="line">    getAnswer: _.debounce(</span><br><span class="line">      function () &#123;</span><br><span class="line">        var vm = this</span><br><span class="line">        if (this.question.indexOf(&apos;?&apos;) === -1) &#123;</span><br><span class="line">          vm.answer = &apos;Questions usually contain a question mark. ;-)&apos;</span><br><span class="line">          return</span><br><span class="line">        &#125;</span><br><span class="line">        vm.answer = &apos;Thinking...&apos;</span><br><span class="line">        axios.get(&apos;https://yesno.wtf/api&apos;)</span><br><span class="line">          .then(function (response) &#123;</span><br><span class="line">            vm.answer = _.capitalize(response.data.answer)</span><br><span class="line">          &#125;)</span><br><span class="line">          .catch(function (error) &#123;</span><br><span class="line">            vm.answer = &apos;Error! Could not reach the API. &apos; + error</span><br><span class="line">          &#125;)</span><br><span class="line">      &#125;,</span><br><span class="line">      // 等待用户停止输入后的时间（毫秒）</span><br><span class="line">      500</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>如此,使用watch可以进行异步操作,限制操作间隔,并设置中间状态直到获得真正的答案.<br>除了使用watch option,也可以用vm.$watch</p>
+<h4 id="class和style绑定"><a href="#class和style绑定" class="headerlink" title="class和style绑定"></a>class和style绑定</h4><p>除了数据绑定,常见的还有style,class的绑定</p>
+<h4 id="对象语法"><a href="#对象语法" class="headerlink" title="对象语法"></a>对象语法</h4><p>可以传递一个对象给v-bind:class来动态切换classes:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;static&quot; </span><br><span class="line">    v-bind:class=&quot;&#123;active:isActive,&apos;text-danger&apos;:hasError&#125;&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>对应的active和text-danger则通过data传递过来<br>也可以通过data把class传递过来<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class=&quot;classObject&quot;&gt;&lt;/div&gt;</span><br><span class="line">data:&#123;</span><br><span class="line">    classObject:&#123;</span><br><span class="line">        active:true,</span><br><span class="line">        &apos;text-danger&apos;:false</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="vue中安装依赖文件"><a href="#vue中安装依赖文件" class="headerlink" title="vue中安装依赖文件"></a>vue中安装依赖文件</h4><ul>
+<li><p>vue-cli webpack全局引入jquery</p>
+<ul>
+<li><p>首先在package.json里加入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies:&#123;</span><br><span class="line"> &quot;jquery&quot; : &quot;^2.2.3&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在webpack.base.conf.js里加入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var webpack = require(&quot;webpack&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在module.exports的最后加入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line"> new webpack.optimize.CommonsChunkPlugin(&apos;common.js&apos;),</span><br><span class="line"> new webpack.ProvidePlugin(&#123;</span><br><span class="line">     jQuery: &quot;jquery&quot;,</span><br><span class="line">     $: &quot;jquery&quot;</span><br><span class="line"> &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后一定要重新 run dev</p>
+</li>
+<li><p>在main.js 引入就ok了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import $ from &apos;jquery&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装: cnpm/npm install jquery</p>
+</li>
+</ul>
+</li>
+<li><p>vue中的$http服务  </p>
+<ul>
+<li>需要引入一个叫vue-resource.js的文件:cnpm/npm install vue-resource</li>
+<li>然后在main.js中配置import VueResource from ‘vue-resource’;</li>
+<li>然后用Vue.use(VueResource) 方法启用插件</li>
+</ul>
+</li>
+</ul>
+<h4 id="在-vue文件中引入第三方非NPM模块"><a href="#在-vue文件中引入第三方非NPM模块" class="headerlink" title="在.vue文件中引入第三方非NPM模块"></a>在.vue文件中引入第三方非NPM模块</h4><ul>
+<li>在 webpack.base.conf.js 中添加externals<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">externals: &#123;</span><br><span class="line">  &apos;zepto&apos;: &apos;Zepto&apos;,</span><br><span class="line">  &apos;wx&apos;: &apos;jWeixin&apos;,</span><br><span class="line">  &apos;swiper&apos;: &apos;Swiper&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><em>externals 中 swiper 是键，对应的值一定的是插件 swiper.js 所定义的变量 Swiper :</em></p>
+<h4 id="webpack打包vue生成的文件-在dist中访问时资源文件报404"><a href="#webpack打包vue生成的文件-在dist中访问时资源文件报404" class="headerlink" title="webpack打包vue生成的文件,在dist中访问时资源文件报404"></a>webpack打包vue生成的文件,在dist中访问时资源文件报404</h4><p>使用vue-cli构建的vue项目，webpack的配置文件是分散在很多地方的，而我们需要修改的是build/webpack.base.conf.js，修改两处的代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">  // 在开头引入webpack，后面的plugins那里需要</span><br><span class="line">var webpack = require(&apos;webpack&apos;)</span><br><span class="line">// resolve</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">   // 其他代码...</span><br><span class="line">   resolve: &#123;</span><br><span class="line">      extensions: [&apos;&apos;, &apos;.js&apos;, &apos;.vue&apos;],</span><br><span class="line">      fallback: [path.join(__dirname, &apos;../node_modules&apos;)],</span><br><span class="line">      alias: &#123;</span><br><span class="line">          &apos;src&apos;: path.resolve(__dirname, &apos;../src&apos;),</span><br><span class="line">          &apos;assets&apos;: path.resolve(__dirname, &apos;../src/assets&apos;),</span><br><span class="line">          &apos;components&apos;: path.resolve(__dirname, &apos;../src/components&apos;),</span><br><span class="line"></span><br><span class="line">          // webpack 使用 jQuery，如果是自行下载的</span><br><span class="line">          // &apos;jquery&apos;: path.resolve(__dirname, &apos;../src/assets/libs/jquery/jquery.min&apos;),</span><br><span class="line">          // 如果使用NPM安装的jQuery</span><br><span class="line">          &apos;jquery&apos;: &apos;jquery&apos; </span><br><span class="line">      &#125;</span><br><span class="line">   &#125;,</span><br><span class="line"></span><br><span class="line">   // 增加一个plugins</span><br><span class="line">   plugins: [</span><br><span class="line">      new webpack.ProvidePlugin(&#123;</span><br><span class="line">          $: &quot;jquery&quot;,</span><br><span class="line">          jQuery: &quot;jquery&quot;</span><br><span class="line">      &#125;)</span><br><span class="line">   ],</span><br><span class="line"></span><br><span class="line">   // 其他代码...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>首先修改config目录下的index.js文件<ul>
+<li>将其中build的配置项assetsPublicPath进行修改，改为</li>
+<li><img src="imgs/修改公共路径.png" alt=""></li>
+</ul>
+</li>
+<li>此时html中的js、css、img引入均没有问题，但是css中的background-image还是报404 <ul>
+<li>此时的问题原因是，使用了相对地址后，在css进行引入的图片路径，其相对的是css文件的路径</li>
+<li>此时的修改方法是，修改build文件夹中的utils.js文件，修改如下这一行</li>
+<li><img src="imgs/修改图片路径.jpg" alt=""><br>这样css中的背景图也OK了，如果在css中引入字体也可以用这样的方式修复404问题。</li>
+</ul>
+</li>
+<li>要引入Bootstrap，我们在vue的入口js文件src/main.js开头加入<br>// 使用Bootstrap<br>import ‘./assets/libs/bootstrap/css/bootstrap.min.css’<br>import ‘./assets/libs/bootstrap/js/bootstrap.min’</li>
+<li>使用toastr组件，只需要在需要的地方import进来，或者全局引入css在需要的地方引用js，然后直接使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 使用toastr</span><br><span class="line">import &apos;assets/libs/toastr/toastr.min.css&apos;</span><br><span class="line">import toastr from &apos;assets/libs/toastr/toastr.min&apos;</span><br><span class="line"></span><br><span class="line">toastr.success(&apos;Hello&apos;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="给后台传参数时报错"><a href="#给后台传参数时报错" class="headerlink" title="给后台传参数时报错"></a>给后台传参数时报错</h4><p>如果Web服务器无法处理编码为applicationjson的请求，你可以启用emulateJSON选项。启用该选项后，请求会以application/x-www-form-urlencoded作为MIME type，就像普通的HTML表单一样。<br>说白了post在进行数据请求时；需要填写第三个参数{emulateJSON:true}，否则后台是无法获取你传递的参数的<br>代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">this.$http.post(&quot;http://192.168.0.192:8085/user/phonePCMessageValidation&quot;,&#123;</span><br><span class="line">  &apos;phoneNumber&apos;:&apos;1563*****05&apos;&#125;,&#123;emulateJSON:true&#125;).then(</span><br><span class="line">  function (res) &#123;            </span><br><span class="line">                        // 处理成功的结果</span><br><span class="line">        console.log(res.body)</span><br><span class="line">    </span><br><span class="line">  &#125;,function (err) &#123;</span><br><span class="line">  // 处理失败的结果</span><br><span class="line">  console.log(err)</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/25/vue基础知识整理/" data-id="cjctxtfo80002mkvcvi7f2wv9" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/25/Git命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">Git命令</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/25/vue基础知识整理/">vue基础知识整理</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/25/Git命令/">Git命令</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/25/工作笔记整理/">工作笔记整理</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/25/NodeJs/">NodeJs</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/24/hexo基本命令/">hexo基本命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
