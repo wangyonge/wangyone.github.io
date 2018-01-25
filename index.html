@@ -61,6 +61,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-工作笔记整理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/25/工作笔记整理/" class="article-date">
+  <time datetime="2018-01-25T01:52:37.000Z" itemprop="datePublished">2018-01-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/25/工作笔记整理/">工作笔记整理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><h4 id="一、判断系统是否是移动端并跳转至相应页面"><a href="#一、判断系统是否是移动端并跳转至相应页面" class="headerlink" title="一、判断系统是否是移动端并跳转至相应页面"></a>一、判断系统是否是移动端并跳转至相应页面</h4><p>代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">////判断是否移动端，如果是则跳转到指定的URL地址</span><br><span class="line">function browserRedirect(url) &#123;</span><br><span class="line">    //只读的字符串，声明了浏览器用于 HTTP 请求的用户代理头的值</span><br><span class="line">    var sUserAgent = navigator.userAgent.toLowerCase();</span><br><span class="line">    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == &quot;iphone os&quot;;</span><br><span class="line">    var bIsMidp = sUserAgent.match(/midp/i) == &quot;midp&quot;;</span><br><span class="line">    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == &quot;rv:1.2.3.4&quot;;</span><br><span class="line">    var bIsUc = sUserAgent.match(/ucweb/i) == &quot;ucweb&quot;;</span><br><span class="line">    var bIsAndroid = sUserAgent.match(/android/i) == &quot;android&quot;;</span><br><span class="line">    var bIsCE = sUserAgent.match(/windows ce/i) == &quot;windows ce&quot;;</span><br><span class="line">    var bIsWM = sUserAgent.match(/windows mobile/i) == &quot;windows mobile&quot;;</span><br><span class="line">    if (bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) &#123;</span><br><span class="line">        window.location.replace(url);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">browserRedirect(url);//可跳转html和jsp页面</span><br></pre></td></tr></table></figure></p>
+<h4 id="二、获取系统时间并返回指定的日期格式"><a href="#二、获取系统时间并返回指定的日期格式" class="headerlink" title="二、获取系统时间并返回指定的日期格式"></a>二、获取系统时间并返回指定的日期格式</h4><ul>
+<li><p>获取系统当天时间,代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function getDay(date)&#123;</span><br><span class="line">    date=new Date();</span><br><span class="line">    var y = date.getFullYear();</span><br><span class="line">    var m = date.getMonth()+1;</span><br><span class="line">    var d = date.getDate();</span><br><span class="line">    m = m &lt; 10 ? (&apos;0&apos; + m) : m;</span><br><span class="line">    d = d &lt; 10 ? (&apos;0&apos; + d) : d;</span><br><span class="line">    return y +&apos;/&apos;+ m +&apos;/&apos;+ d;</span><br><span class="line">    // return y +&apos;-&apos; + m + &apos;-&apos; + d;</span><br><span class="line">&#125;</span><br><span class="line">var date=getDay(Date());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取当天日期后面几天的日期,代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var date1=new Date();</span><br><span class="line">var date2=new Date(date1);</span><br><span class="line">date2.setDate(date1.getDate()+n);//n为要加的天数</span><br><span class="line">var date=getDay(date2);</span><br><span class="line">console.log(&apos;date&apos;+date);//date:2017/12/14+n</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="jquery扩展方法获取url地址栏参数"><a href="#jquery扩展方法获取url地址栏参数" class="headerlink" title="jquery扩展方法获取url地址栏参数"></a>jquery扩展方法获取url地址栏参数</h4><p>代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">(function($)&#123;</span><br><span class="line">    $.getUrlParam=function(name)&#123;</span><br><span class="line">        var reg=new RegExp(&quot;(^|&amp;)&quot; + name + &quot;=([^&amp;]*)(&amp;|$)&quot;);</span><br><span class="line">        var r=window.location.search.substr(1).match(reg);</span><br><span class="line">        if(r != null)</span><br><span class="line">        return unescape(r[2]);</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(jQuery);</span><br><span class="line">//使用时调用该方法即可</span><br><span class="line">//eg:</span><br><span class="line">var name=$.getUrlParam(&apos;name&apos;);</span><br><span class="line">var age=$.getUrlParam(&apos;age&apos;);</span><br></pre></td></tr></table></figure></p>
+<h4 id="移动端页面调出键盘后输入框被遮挡的解决办法"><a href="#移动端页面调出键盘后输入框被遮挡的解决办法" class="headerlink" title="移动端页面调出键盘后输入框被遮挡的解决办法"></a>移动端页面调出键盘后输入框被遮挡的解决办法</h4><p>代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;input&apos;).bind(&apos;click&apos;,function(e)&#123;</span><br><span class="line">    var $this = $(this);</span><br><span class="line">    e.preventDefault();</span><br><span class="line">    // setTimeout(function()&#123;</span><br><span class="line">    //     $(window).scrollTop($this.offset().top - 10);</span><br><span class="line">    // &#125;,200);</span><br><span class="line">    setTimeout(function()&#123;   </span><br><span class="line">         document.body.scrollTop = document.body.scrollHeight;  </span><br><span class="line">    &#125;,300); </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="修改a标签href属性"><a href="#修改a标签href属性" class="headerlink" title="修改a标签href属性"></a>修改a标签href属性</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var href=$(&apos;a&apos;).attr(&apos;href&apos;);</span><br><span class="line">href=$(&apos;a&apos;).attr(&apos;href&apos;,href);</span><br></pre></td></tr></table></figure>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><h4 id="一、解决谷歌浏览器输入框飘黄"><a href="#一、解决谷歌浏览器输入框飘黄" class="headerlink" title="一、解决谷歌浏览器输入框飘黄"></a>一、解决谷歌浏览器输入框飘黄</h4><p>代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    input:-webkit-autofill &#123; </span><br><span class="line">    -webkit-box-shadow: 0 0 0px 1000px color inset; </span><br><span class="line">    /*color值自定义*/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/25/工作笔记整理/" data-id="cjctugxbo0002skvc85oat4vs" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-NodeJs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/01/25/NodeJs/" class="article-date">
@@ -138,7 +187,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/NodeJs/" data-id="cjctuc2tu0000rsvctuwg6mxh" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/25/NodeJs/" data-id="cjctugxbe0000skvcda5pz19z" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -198,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/24/hexo基本命令/" data-id="cjctuc2tu0001rsvcm9epw2fi" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/24/hexo基本命令/" data-id="cjctugxbe0001skvcaayz5z4x" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -237,6 +286,10 @@
     <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/01/25/工作笔记整理/">工作笔记整理</a>
+          </li>
         
           <li>
             <a href="/2018/01/25/NodeJs/">NodeJs</a>
