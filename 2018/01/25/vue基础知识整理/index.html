@@ -14,9 +14,9 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="模板语法 文本插值 v-html=”html”,HTMl输出 v-bind —-HTML属性插值.  eg:按钮   JavaScript表达式—直接在mustache,属性插值里面使用各种表达式(加减乘除,三元运算,方法调用等) 过滤器(有点类似shell命令中的管道,可以定义过滤器来对原始值进行变化) 指令—v-bind,v-on系列(dom事件的监听),v-for,v-model等  vue">
 <meta property="og:image" content="c:/Users/22/Pictures/Camera%20Roll/vue生命周期.png">
-<meta property="og:image" content="http://yoursite.com/2018/01/25/vue基础知识整理/imgs/修改公共路径.png">
-<meta property="og:image" content="http://yoursite.com/2018/01/25/vue基础知识整理/imgs/修改图片路径.jpg">
-<meta property="og:updated_time" content="2018-01-25T03:26:55.344Z">
+<meta property="og:image" content="http://yoursite.com/2018/01/imgs/修改公共路径.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/imgs/修改图片路径.jpg">
+<meta property="og:updated_time" content="2018-01-25T03:58:36.320Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue基础知识整理">
 <meta name="twitter:description" content="模板语法 文本插值 v-html=”html”,HTMl输出 v-bind —-HTML属性插值.  eg:按钮   JavaScript表达式—直接在mustache,属性插值里面使用各种表达式(加减乘除,三元运算,方法调用等) 过滤器(有点类似shell命令中的管道,可以定义过滤器来对原始值进行变化) 指令—v-bind,v-on系列(dom事件的监听),v-for,v-model等  vue">
@@ -56,9 +56,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -155,13 +155,13 @@
 <ul>
 <li>首先修改config目录下的index.js文件<ul>
 <li>将其中build的配置项assetsPublicPath进行修改，改为</li>
-<li><img src="imgs/修改公共路径.png" alt=""></li>
+<li><img src="../../imgs/修改公共路径.png" alt=""></li>
 </ul>
 </li>
 <li>此时html中的js、css、img引入均没有问题，但是css中的background-image还是报404 <ul>
 <li>此时的问题原因是，使用了相对地址后，在css进行引入的图片路径，其相对的是css文件的路径</li>
 <li>此时的修改方法是，修改build文件夹中的utils.js文件，修改如下这一行</li>
-<li><img src="imgs/修改图片路径.jpg" alt=""><br>这样css中的背景图也OK了，如果在css中引入字体也可以用这样的方式修复404问题。</li>
+<li><img src="../../imgs/修改图片路径.jpg" alt=""><br>这样css中的背景图也OK了，如果在css中引入字体也可以用这样的方式修复404问题。</li>
 </ul>
 </li>
 <li>要引入Bootstrap，我们在vue的入口js文件src/main.js开头加入<br>// 使用Bootstrap<br>import ‘./assets/libs/bootstrap/css/bootstrap.min.css’<br>import ‘./assets/libs/bootstrap/js/bootstrap.min’</li>
@@ -173,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/vue基础知识整理/" data-id="cjctxtfo80002mkvcvi7f2wv9" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/25/vue基础知识整理/" data-id="cjctxtfo80002mkvcvi7f2wv9" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -184,7 +184,7 @@
   
   
     <a href="/2018/01/25/Git命令/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Viejo</strong>
       <div class="article-nav-title">Git命令</div>
     </a>
   
@@ -207,7 +207,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li></ul>
     </div>
@@ -217,7 +217,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
         
@@ -254,7 +254,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
