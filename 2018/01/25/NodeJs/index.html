@@ -5,14 +5,18 @@
   
 
   
-  <title>Hexo</title>
+  <title>NodeJs | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="Node.js应用的组成部分 引入required模块:使用require指令来载入Node.js模块 创建服务器:服务器可以监听客户端的请求,类似于Apache、Nginx等HTTP服务器 接收请求与响应请求:服务器很容易创建,客户端可以使用浏览器或终端发送HTTP请求,服务器接收请求后返回响应数据  Node.js创建第一个应用步骤一、引入required模块1var http=require">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NodeJs">
+<meta property="og:url" content="http://yoursite.com/2018/01/25/NodeJs/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Node.js应用的组成部分 引入required模块:使用require指令来载入Node.js模块 创建服务器:服务器可以监听客户端的请求,类似于Apache、Nginx等HTTP服务器 接收请求与响应请求:服务器很容易创建,客户端可以使用浏览器或终端发送HTTP请求,服务器接收请求后返回响应数据  Node.js创建第一个应用步骤一、引入required模块1var http=require">
+<meta property="og:updated_time" content="2018-01-25T01:49:20.642Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="NodeJs">
+<meta name="twitter:description" content="Node.js应用的组成部分 引入required模块:使用require指令来载入Node.js模块 创建服务器:服务器可以监听客户端的请求,类似于Apache、Nginx等HTTP服务器 接收请求与响应请求:服务器很容易创建,客户端可以使用浏览器或终端发送HTTP请求,服务器接收请求后返回响应数据  Node.js创建第一个应用步骤一、引入required模块1var http=require">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -59,9 +63,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-NodeJs" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-NodeJs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/01/25/NodeJs/" class="article-date">
   <time datetime="2018-01-25T01:48:50.000Z" itemprop="datePublished">2018-01-25</time>
@@ -74,8 +76,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/25/NodeJs/">NodeJs</a>
+    <h1 class="article-title" itemprop="name">
+      NodeJs
     </h1>
   
 
@@ -144,71 +146,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hexo基本命令" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/01/24/hexo基本命令/" class="article-date">
-  <time datetime="2018-01-24T06:27:46.000Z" itemprop="datePublished">2018-01-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/24/hexo基本命令/">hexo基本命令</a>
-    </h1>
+    <a href="/2018/01/24/hexo基本命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">hexo基本命令</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="日常更新"><a href="#日常更新" class="headerlink" title="日常更新"></a>日常更新</h4><ul>
-<li>本地新建文件名:hexo new “博客名”</li>
-<li>生成文档: hexo g -d</li>
-<li>运行本地服务器:hexo s -g ,浏览器中<a href="http://localhost:4000/预览" target="_blank" rel="noopener">http://localhost:4000/预览</a></li>
-<li>同步到github:hexo d -g</li>
-</ul>
-<h4 id="卸载hexo"><a href="#卸载hexo" class="headerlink" title="卸载hexo"></a>卸载hexo</h4><ul>
-<li>3.0.0版本执行:npm uninstall hexo-cli-g,</li>
-<li>旧版本执行:npm uninstall hexo -g</li>
-</ul>
-<h4 id="安装旧版本hexo"><a href="#安装旧版本hexo" class="headerlink" title="安装旧版本hexo"></a>安装旧版本hexo</h4><ul>
-<li>先卸载当前版本,以2.8.3为例,执行:npm uninstall hexo@2.8.3 -g,再初始化并安装依赖和插件</li>
-</ul>
-<h4 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h4><ul>
-<li>npm install hexo-cli -g</li>
-<li>hexo init blog</li>
-<li>cd blog</li>
-<li>npm install</li>
-<li>hexo server</li>
-</ul>
-<h4 id="域名绑定"><a href="#域名绑定" class="headerlink" title="域名绑定"></a>域名绑定</h4><p>如果你不想使用yourusername.github.io，也可以绑定自己的域名，将域名的CNAME指向yourusername.github.io，然后在github下面新建一个CNAME文件，里面写上你的域名，然后就能通过域名直接访问到yourusername.github.io了。</p>
-<h4 id="安装Next主题"><a href="#安装Next主题" class="headerlink" title="安装Next主题"></a>安装Next主题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd your-hexo-site</span><br><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//feed插件</span><br><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">//站点地图</span><br><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line">//百度站点地图</span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
-<h4 id="SEO优化"><a href="#SEO优化" class="headerlink" title="SEO优化"></a>SEO优化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% block title %&#125; &#123;&#123; config.title &#125;&#125; - &#123;&#123; theme.description &#125;&#125; &#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/24/hexo基本命令/" data-id="cjctuc2tu0001rsvcm9epw2fi" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
