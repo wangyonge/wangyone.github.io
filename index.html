@@ -61,6 +61,130 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-css布局" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/21/css布局/" class="article-date">
+  <time datetime="2018-03-21T06:33:00.000Z" itemprop="datePublished">2018-03-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/21/css布局/">css布局</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="居中布局"><a href="#居中布局" class="headerlink" title="居中布局"></a>居中布局</h1><h4 id="水平布局"><a href="#水平布局" class="headerlink" title="水平布局"></a>水平布局</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;parent&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;child&quot;&gt;box&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>一、 使用inline-block+text-align</p>
+<ul>
+<li><p>原理、用法</p>
+<ul>
+<li>原理：先将字盒子由块级元素转换成行内块，再使用text-align设置行内块元素居中</li>
+<li>用法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.parent &#123;</span><br><span class="line">    text-align:center;</span><br><span class="line">&#125;</span><br><span class="line">.child &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>优缺点:</p>
+<ul>
+<li>优点:兼容性好,可兼容IE6/7/8</li>
+<li>缺点:child里的文字也会水平居中,再设置text-align:left还原<br>二、使用table+margin<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.child &#123;</span><br><span class="line">    display: table;</span><br><span class="line">    margin: 0 auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>优缺点：</p>
+<ul>
+<li>优点：只设置了child，IE8以上都支持</li>
+<li>缺点：不支持低版本浏览器，将div换成table<br>三、使用absolute+transform<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.parent &#123;</span><br><span class="line">    position:relative;</span><br><span class="line">&#125;</span><br><span class="line">.child &#123;</span><br><span class="line">    position:absolute;</span><br><span class="line">    left: 50%;</span><br><span class="line">    transform:translateX(-50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>优缺点：</p>
+<ul>
+<li>优点：居中元素不会对其他产生影响</li>
+<li>缺点：transform属css3属性，要考虑兼容性，高版本浏览器前要加前缀<br>四、使用flex+margin<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.parent &#123;</span><br><span class="line">    display:flex;</span><br><span class="line">&#125;</span><br><span class="line">.child &#123;</span><br><span class="line">    margin: 0 auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>优缺点：</p>
+<ul>
+<li>缺点：不兼容低版本IE<br>五、使用flex+justify-content<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.parent &#123;</span><br><span class="line">    display:flex;</span><br><span class="line">    justify-content:center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>优缺点：</p>
+<ul>
+<li>优点：设置parent即可</li>
+<li>缺点：不兼容低版本IE</li>
+</ul>
+</li>
+</ul>
+<h4 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h4><p>一、使用table-cell—+vertical-align<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.parent &#123;</span><br><span class="line">    display:table-cell;</span><br><span class="line">    vertical-align:middle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>优缺点：</p>
+<ul>
+<li>优点：兼容IE8以上<br>二、使用absolute+transform<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.parent &#123;</span><br><span class="line">    position:relative;</span><br><span class="line">&#125;</span><br><span class="line">.child &#123;</span><br><span class="line">    position:absolute;</span><br><span class="line">    top: 50%;</span><br><span class="line">    transform:translateY(-50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>优缺点：</p>
+<ul>
+<li>优点：居中元素不会对其他产生影响</li>
+<li>缺点：transform属css3属性，要考虑兼容性，高版本浏览器前要加前缀<br>三、使用flex+align-items<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.parent &#123;</span><br><span class="line">    position:flex;</span><br><span class="line">    align-items:center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>优缺点：</p>
+<ul>
+<li>优点：只设置parent</li>
+<li>缺点：兼容性存在一定问题</li>
+</ul>
+</li>
+</ul>
+<h4 id="水平垂直居中"><a href="#水平垂直居中" class="headerlink" title="水平垂直居中"></a>水平垂直居中</h4><p>一、使用absolute—+transform<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.parent &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.child &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    left: 50%;</span><br><span class="line">    top: 50%;</span><br><span class="line">    transform: tranplate(-50%, -50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>优缺点：</p>
+<ul>
+<li>优点：child元素不会对其他元素产生影响</li>
+<li>缺点：兼容性存在一定问题<br>二、使用inline-block+text-align+table-cell+vertical-align<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.parent &#123;</span><br><span class="line">    text-align: center;</span><br><span class="line">    display: table-cell;</span><br><span class="line">    vertical-align: middle;</span><br><span class="line">&#125;</span><br><span class="line">.child &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>优缺点：</p>
+<ul>
+<li>优点：兼容性好<br>三、使用flex+justify-content+align-items<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.parent &#123;</span><br><span class="line">    display:flex;</span><br><span class="line">    justify-content:center;</span><br><span class="line">    align-items:center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>优缺点：</p>
+<ul>
+<li>优点：只设置了parent</li>
+<li>缺点：有兼容性问题</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/21/css布局/" data-id="cjf0xn3av00008gvc37iuy1jx" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-vue基础知识整理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/01/25/vue基础知识整理/" class="article-date">
@@ -167,7 +291,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/vue基础知识整理/" data-id="cjcuer6ny0004tcvc9obq3g7a" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/25/vue基础知识整理/" data-id="cjf0xn3bl00028gvcm9q5mkx2" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -319,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/Git命令/" data-id="cjcuer6ny0001tcvckf6ugoxf" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/25/Git命令/" data-id="cjf0xn3cb00038gvcu35jfla2" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -368,7 +492,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/工作笔记整理/" data-id="cjcuer6ny0003tcvcfedlln9r" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/25/工作笔记整理/" data-id="cjf0xn3d800058gvcdmi0xjaf" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -455,67 +579,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/NodeJs/" data-id="cjcuer6no0000tcvcef7kshq2" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hexo基本命令" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/01/24/hexo基本命令/" class="article-date">
-  <time datetime="2018-01-24T06:27:46.000Z" itemprop="datePublished">2018-01-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/24/hexo基本命令/">hexo基本命令</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="日常更新"><a href="#日常更新" class="headerlink" title="日常更新"></a>日常更新</h4><ul>
-<li>本地新建文件名:hexo new “博客名”</li>
-<li>生成文档: hexo g -d</li>
-<li>运行本地服务器:hexo s -g ,浏览器中<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a></li>
-<li>同步到github:hexo d -g</li>
-</ul>
-<h4 id="卸载hexo"><a href="#卸载hexo" class="headerlink" title="卸载hexo"></a>卸载hexo</h4><ul>
-<li>3.0.0版本执行:npm uninstall hexo-cli-g,</li>
-<li>旧版本执行:npm uninstall hexo -g</li>
-</ul>
-<h4 id="安装旧版本hexo"><a href="#安装旧版本hexo" class="headerlink" title="安装旧版本hexo"></a>安装旧版本hexo</h4><ul>
-<li>先卸载当前版本,以2.8.3为例,执行:npm uninstall hexo@2.8.3 -g,再初始化并安装依赖和插件</li>
-</ul>
-<h4 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h4><ul>
-<li>npm install hexo-cli -g</li>
-<li>hexo init blog</li>
-<li>cd blog</li>
-<li>npm install</li>
-<li>hexo server</li>
-</ul>
-<h4 id="域名绑定"><a href="#域名绑定" class="headerlink" title="域名绑定"></a>域名绑定</h4><p>如果你不想使用yourusername.github.io，也可以绑定自己的域名，将域名的CNAME指向yourusername.github.io，然后在github下面新建一个CNAME文件，里面写上你的域名，然后就能通过域名直接访问到yourusername.github.io了。</p>
-<h4 id="安装Next主题"><a href="#安装Next主题" class="headerlink" title="安装Next主题"></a>安装Next主题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd your-hexo-site</span><br><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//feed插件</span><br><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">//站点地图</span><br><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line">//百度站点地图</span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
-<h4 id="SEO优化"><a href="#SEO优化" class="headerlink" title="SEO优化"></a>SEO优化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% block title %&#125; &#123;&#123; config.title &#125;&#125; - &#123;&#123; theme.description &#125;&#125; &#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/24/hexo基本命令/" data-id="cjcuer6ny0002tcvcev3ic5ju" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/25/NodeJs/" data-id="cjf0xn3co00048gvc6is116qx" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -526,6 +590,11 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
+  </nav>
 
 </section>
         
@@ -543,7 +612,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li></ul>
     </div>
   </div>
 
@@ -554,6 +623,10 @@
     <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/03/21/css布局/">css布局</a>
+          </li>
         
           <li>
             <a href="/2018/01/25/vue基础知识整理/">vue基础知识整理</a>
@@ -569,10 +642,6 @@
         
           <li>
             <a href="/2018/01/25/NodeJs/">NodeJs</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/24/hexo基本命令/">hexo基本命令</a>
           </li>
         
       </ul>
