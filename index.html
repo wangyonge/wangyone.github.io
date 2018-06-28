@@ -66,6 +66,98 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-react笔记整理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/29/react笔记整理/" class="article-date">
+  <time datetime="2018-05-29T06:30:48.000Z" itemprop="datePublished">2018-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/29/react笔记整理/">react笔记整理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="React-基础知识"><a href="#React-基础知识" class="headerlink" title="React 基础知识"></a>React 基础知识</h1><h3 id="项目搭建"><a href="#项目搭建" class="headerlink" title="项目搭建"></a>项目搭建</h3><h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><ul>
+<li>化生成package.json文件: npm init </li>
+</ul>
+<h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><ul>
+<li>安装react: npm install react –save</li>
+<li>安装react-dom: npm install react-dom –save<ul>
+<li>如果使用react-native 则安装react-native</li>
+</ul>
+</li>
+<li>安装webpack: npm install webpack –save-dev</li>
+<li>npm install webpack-dev-server 支持热加载</li>
+<li>安装babel,将ES6 转化为ES5: npm install babel-core –save-dev</li>
+<li>安装babel其他工具<ul>
+<li>npm install babel-loader babel-plugin-transform-runtime babel-preset-es2015 babel-preset-react babel-preset-stage-2 babel-runtime babel-polyfill –save-dev</li>
+</ul>
+</li>
+</ul>
+<h4 id="配置项目运行命令"><a href="#配置项目运行命令" class="headerlink" title="配置项目运行命令"></a>配置项目运行命令</h4><p>在package.json中修改scripts<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;start&quot;: &quot;webpack-dev-server --hot --inline --colors --content-base ./build&quot;,</span><br><span class="line">  &quot;build&quot;: &quot;webpack --progress --colors&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>运行项目: npm start</li>
+<li>打包生产环境: npm build</li>
+</ul>
+<h4 id="启动webpack"><a href="#启动webpack" class="headerlink" title="启动webpack"></a>启动webpack</h4><p>配置webpack.config.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">var webpack = require(&apos;webpack&apos;)</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  entry: &apos;./src/index.js&apos;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: __dirname + &apos;/build&apos;,</span><br><span class="line">    filename: &quot;bundle.js&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  module: &#123;</span><br><span class="line">    rules: [&#123;</span><br><span class="line">        test: /\.js$/,</span><br><span class="line">        exclude: /node_modules/,</span><br><span class="line">        loader: &apos;babel-loader&apos;,</span><br><span class="line">        query: &#123;</span><br><span class="line">            plugins: [&apos;transform-runtime&apos;],</span><br><span class="line">            presets: [&apos;es2015&apos;, &apos;react&apos;, &apos;stage-2&apos;]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        test: /\.css$/,</span><br><span class="line">        loader: &quot;style-loader!css-loader&quot;</span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>配置基本完成,可以写react代码了</p>
+<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><ul>
+<li>所有的组件都需要在头部引入 import React from ‘react’</li>
+<li>导入组件也用上面方法,使用组件是用半闭合标签<app></app></li>
+<li>所有组件在最后都需要  export default 到全局<h4 id="类组件Class"><a href="#类组件Class" class="headerlink" title="类组件Class"></a>类组件Class</h4></li>
+<li>所有的类组件都有一个render()方法返回jsx<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class App extends react.component &#123;</span><br><span class="line">  render() &#123; // 返回jsx</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;Hello World!&lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="函数型组件Functional"><a href="#函数型组件Functional" class="headerlink" title="函数型组件Functional"></a>函数型组件Functional</h4><p>用 const 定义一个函数,用 props 来传参<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const List = (props) =&gt; &#123;</span><br><span class="line">  return()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>this.setState 回调函数,参数为 previousState<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.setState((previousState) =&gt; &#123;</span><br><span class="line">  console.log(previousState)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h2><h4 id="安装必须的依赖"><a href="#安装必须的依赖" class="headerlink" title="安装必须的依赖"></a>安装必须的依赖</h4><ul>
+<li><p>首先安装 redux 和 react-redux</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --save redux</span><br><span class="line">npm install --save react-redux</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后安装 redux middleware, 在此先安装 redux-logger, 有助于开发</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save redux-logger</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>还有一些常用的中间件,比如redux-thunk and redux-promise</p>
+</li>
+</ul>
+<h4 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h4><p>使用redux构建react应用一般都有一个标准的模板,不同模板形式上有区别,但思想都是一样的,以下按照一种文件结构来构建</p>
+<ul>
+<li>首先在src中新建一个文件夹redux,然后在其中新建一个文件configureStore.js,添加以下代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createStore, applyMiddleware, combineReducers &#125; from &apos;redux&apos;;</span><br><span class="line">import createLogger from &apos;redux-logger&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>createStore 是由redux提供的用来初始化store的函数, applyMiddleware是用来添加我们需要的中间件的.</p>
+<p>combineReducers用来把多个reducers 合并为一个单一实体.</p>
+<p>createLogger 可以console出每一个action后数据的详细处理过程,方便调试.使用方法如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const loggerMiddleware = createLogger();</span><br><span class="line">const createStoreWithMiddleware = applyMiddleware(loggerMiddleware)(createStore)</span><br></pre></td></tr></table></figure></p>
+<h4 id="模块modules"><a href="#模块modules" class="headerlink" title="模块modules"></a>模块modules</h4><p>在src/redux/ 新建一个文件夹 modules. 这个文件夹中存放所有的reducers, action creators 和 constants.<br>这里使用的 redux 组织结构叫作 ducks, 就是把相关的 reducers, action creators 和 constants 都放在一个单独的文件中,方便修改,只需修改一个文件夹.</p>
+<p>在 modules 中新建组件文件,命名是依据容器组件的名字而来, state就是一个js对象,reducer就是js的switch语句:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const initialState = &#123;&#125;</span><br><span class="line"></span><br><span class="line">export default function reducer(state = initialState, action) &#123;</span><br><span class="line">  switch(action.type) &#123;</span><br><span class="line">    default:</span><br><span class="line">      return state;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="完善Store"><a href="#完善Store" class="headerlink" title="完善Store"></a>完善Store</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/05/29/react笔记整理/" data-id="cjiycs1zb0006hovchqnay1nl" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-css布局" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/18/css布局/" class="article-date">
@@ -180,7 +272,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/18/css布局/" data-id="cjhbp6nn90002z4vcnfqpce6r" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/18/css布局/" data-id="cjiycs1yk0001hovcekxjd8gc" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -223,7 +315,10 @@
 <li>过滤器(有点类似shell命令中的管道,可以定义过滤器来对原始值进行变化)</li>
 <li>指令—v-bind,v-on系列(dom事件的监听),v-for,v-model等</li>
 </ul>
-<h4 id="vue实例"><a href="#vue实例" class="headerlink" title="vue实例"></a>vue实例</h4><p>实际上是viewmodel(数据+函数),都是通过构造函数Vue创建的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    var data = &#123; a: 1 &#125;</span><br><span class="line">var vm = new Vue(&#123;</span><br><span class="line">  el: &apos;#example&apos;,</span><br><span class="line">  data: data,</span><br><span class="line">  created: function () &#123;</span><br><span class="line">    // `this` 指向 vm 实例</span><br><span class="line">    console.log(&apos;a is: &apos; + this.a)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.$data === data // -&gt; true</span><br><span class="line">vm.$el === document.getElementById(&apos;example&apos;) // -&gt; true</span><br><span class="line">// $watch 是一个实例方法</span><br><span class="line">vm.$watch(&apos;a&apos;, function (newVal, oldVal) &#123;</span><br><span class="line">  // 这个回调会在 `vm.a` 改变的时候触发</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h6 id="v-if-v-show"><a href="#v-if-v-show" class="headerlink" title="v-if/v-show"></a>v-if/v-show</h6><p>使用v-if将会删除dom结构,使用v-show是给元素添加display:none属性</p>
+<h6 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li v-for=&quot;(item, index) of list&quot; :key=&quot;index&quot;&gt;&#123;itwm&#125;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li v-for=&quot;item of list&quot; :key=&quot;item&quot;&gt;&#123;itwm&#125;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p><em>使用v-for循环数组的时候,如果只传一个参数,则循环的数据,key值不可以相同,否则会报错,传两个参数则可以解决</em> </p>
+<h4 id="vue实例"><a href="#vue实例" class="headerlink" title="vue实例"></a>vue实例</h4><p>实际上是viewmodel(数据+函数),都是通过构造函数Vue创建的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    var data = &#123; a: 1 &#125;</span><br><span class="line">var vm = new Vue(&#123;</span><br><span class="line">  el: &apos;#example&apos;,</span><br><span class="line">  data: data, </span><br><span class="line">  created: function () &#123;</span><br><span class="line">    // `this` 指向 vm 实例</span><br><span class="line">    console.log(&apos;a is: &apos; + this.a)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.$data === data // -&gt; true</span><br><span class="line">vm.$el === document.getElementById(&apos;example&apos;) // -&gt; true</span><br><span class="line">// $watch 是一个实例方法</span><br><span class="line">vm.$watch(&apos;a&apos;, function (newVal, oldVal) &#123;</span><br><span class="line">  // 这个回调会在 `vm.a` 改变的时候触发</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <h5 id="vue的生命周期"><a href="#vue的生命周期" class="headerlink" title="vue的生命周期"></a>vue的生命周期</h5><ul>
 <li>created</li>
 <li>mounted</li>
@@ -296,7 +391,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/vue基础知识整理/" data-id="cjhbp6nnc0004z4vcqfvh31jo" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/25/vue基础知识整理/" data-id="cjiycs1yw0003hovc4r8tcmhu" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -448,7 +543,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/Git命令/" data-id="cjhbp6nn10000z4vcdvgbjmwg" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/25/Git命令/" data-id="cjiycs1yu0002hovch3qwhhp9" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -508,7 +603,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/工作笔记整理/" data-id="cjhbp6nnd0005z4vch7mokct3" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/25/工作笔记整理/" data-id="cjiycs1z90005hovc2yzusbb2" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -595,7 +690,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/NodeJs/" data-id="cjhbp6nn60001z4vckbs60wjv" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/25/NodeJs/" data-id="cjiycs1yx0004hovc9if6xsta" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -655,7 +750,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/24/hexo基本命令/" data-id="cjhbp6nna0003z4vcd6gn9y2m" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/24/hexo基本命令/" data-id="cjiycs1yk0000hovctm5v90ys" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -696,6 +791,10 @@
       <ul>
         
           <li>
+            <a href="/2018/05/29/react笔记整理/">react笔记整理</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/18/css布局/">css布局</a>
           </li>
         
@@ -709,10 +808,6 @@
         
           <li>
             <a href="/2018/01/25/工作笔记整理/">工作笔记整理</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/25/NodeJs/">NodeJs</a>
           </li>
         
       </ul>

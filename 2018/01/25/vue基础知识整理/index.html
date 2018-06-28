@@ -7,20 +7,20 @@
   
   <title>vue基础知识整理 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="模板语法 文本插值 v-html=”html”,HTMl输出 v-bind —-HTML属性插值.  eg:按钮   JavaScript表达式—直接在mustache,属性插值里面使用各种表达式(加减乘除,三元运算,方法调用等) 过滤器(有点类似shell命令中的管道,可以定义过滤器来对原始值进行变化) 指令—v-bind,v-on系列(dom事件的监听),v-for,v-model等  vue">
+  <meta name="description" content="模板语法 文本插值 v-html=”html”,HTMl输出 v-bind —-HTML属性插值.  eg:按钮   JavaScript表达式—直接在mustache,属性插值里面使用各种表达式(加减乘除,三元运算,方法调用等) 过滤器(有点类似shell命令中的管道,可以定义过滤器来对原始值进行变化) 指令—v-bind,v-on系列(dom事件的监听),v-for,v-model等  v-i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue基础知识整理">
 <meta property="og:url" content="http://yoursite.com/2018/01/25/vue基础知识整理/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="模板语法 文本插值 v-html=”html”,HTMl输出 v-bind —-HTML属性插值.  eg:按钮   JavaScript表达式—直接在mustache,属性插值里面使用各种表达式(加减乘除,三元运算,方法调用等) 过滤器(有点类似shell命令中的管道,可以定义过滤器来对原始值进行变化) 指令—v-bind,v-on系列(dom事件的监听),v-for,v-model等  vue">
+<meta property="og:description" content="模板语法 文本插值 v-html=”html”,HTMl输出 v-bind —-HTML属性插值.  eg:按钮   JavaScript表达式—直接在mustache,属性插值里面使用各种表达式(加减乘除,三元运算,方法调用等) 过滤器(有点类似shell命令中的管道,可以定义过滤器来对原始值进行变化) 指令—v-bind,v-on系列(dom事件的监听),v-for,v-model等  v-i">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/01/imgs/vue生命周期.png">
 <meta property="og:image" content="http://yoursite.com/2018/01/imgs/修改公共路径.png">
 <meta property="og:image" content="http://yoursite.com/2018/01/imgs/修改图片路径.jpg">
-<meta property="og:updated_time" content="2018-01-25T04:02:43.796Z">
+<meta property="og:updated_time" content="2018-06-28T09:33:16.204Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue基础知识整理">
-<meta name="twitter:description" content="模板语法 文本插值 v-html=”html”,HTMl输出 v-bind —-HTML属性插值.  eg:按钮   JavaScript表达式—直接在mustache,属性插值里面使用各种表达式(加减乘除,三元运算,方法调用等) 过滤器(有点类似shell命令中的管道,可以定义过滤器来对原始值进行变化) 指令—v-bind,v-on系列(dom事件的监听),v-for,v-model等  vue">
+<meta name="twitter:description" content="模板语法 文本插值 v-html=”html”,HTMl输出 v-bind —-HTML属性插值.  eg:按钮   JavaScript表达式—直接在mustache,属性插值里面使用各种表达式(加减乘除,三元运算,方法调用等) 过滤器(有点类似shell命令中的管道,可以定义过滤器来对原始值进行变化) 指令—v-bind,v-on系列(dom事件的监听),v-for,v-model等  v-i">
 <meta name="twitter:image" content="http://yoursite.com/2018/01/imgs/vue生命周期.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -105,7 +105,10 @@
 <li>过滤器(有点类似shell命令中的管道,可以定义过滤器来对原始值进行变化)</li>
 <li>指令—v-bind,v-on系列(dom事件的监听),v-for,v-model等</li>
 </ul>
-<h4 id="vue实例"><a href="#vue实例" class="headerlink" title="vue实例"></a>vue实例</h4><p>实际上是viewmodel(数据+函数),都是通过构造函数Vue创建的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    var data = &#123; a: 1 &#125;</span><br><span class="line">var vm = new Vue(&#123;</span><br><span class="line">  el: &apos;#example&apos;,</span><br><span class="line">  data: data,</span><br><span class="line">  created: function () &#123;</span><br><span class="line">    // `this` 指向 vm 实例</span><br><span class="line">    console.log(&apos;a is: &apos; + this.a)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.$data === data // -&gt; true</span><br><span class="line">vm.$el === document.getElementById(&apos;example&apos;) // -&gt; true</span><br><span class="line">// $watch 是一个实例方法</span><br><span class="line">vm.$watch(&apos;a&apos;, function (newVal, oldVal) &#123;</span><br><span class="line">  // 这个回调会在 `vm.a` 改变的时候触发</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h6 id="v-if-v-show"><a href="#v-if-v-show" class="headerlink" title="v-if/v-show"></a>v-if/v-show</h6><p>使用v-if将会删除dom结构,使用v-show是给元素添加display:none属性</p>
+<h6 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li v-for=&quot;(item, index) of list&quot; :key=&quot;index&quot;&gt;&#123;itwm&#125;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li v-for=&quot;item of list&quot; :key=&quot;item&quot;&gt;&#123;itwm&#125;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p><em>使用v-for循环数组的时候,如果只传一个参数,则循环的数据,key值不可以相同,否则会报错,传两个参数则可以解决</em> </p>
+<h4 id="vue实例"><a href="#vue实例" class="headerlink" title="vue实例"></a>vue实例</h4><p>实际上是viewmodel(数据+函数),都是通过构造函数Vue创建的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    var data = &#123; a: 1 &#125;</span><br><span class="line">var vm = new Vue(&#123;</span><br><span class="line">  el: &apos;#example&apos;,</span><br><span class="line">  data: data, </span><br><span class="line">  created: function () &#123;</span><br><span class="line">    // `this` 指向 vm 实例</span><br><span class="line">    console.log(&apos;a is: &apos; + this.a)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.$data === data // -&gt; true</span><br><span class="line">vm.$el === document.getElementById(&apos;example&apos;) // -&gt; true</span><br><span class="line">// $watch 是一个实例方法</span><br><span class="line">vm.$watch(&apos;a&apos;, function (newVal, oldVal) &#123;</span><br><span class="line">  // 这个回调会在 `vm.a` 改变的时候触发</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <h5 id="vue的生命周期"><a href="#vue的生命周期" class="headerlink" title="vue的生命周期"></a>vue的生命周期</h5><ul>
 <li>created</li>
 <li>mounted</li>
@@ -178,7 +181,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/vue基础知识整理/" data-id="cjhbp6nnc0004z4vcqfvh31jo" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/25/vue基础知识整理/" data-id="cjiycs1yw0003hovc4r8tcmhu" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -236,6 +239,10 @@
       <ul>
         
           <li>
+            <a href="/2018/05/29/react笔记整理/">react笔记整理</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/18/css布局/">css布局</a>
           </li>
         
@@ -249,10 +256,6 @@
         
           <li>
             <a href="/2018/01/25/工作笔记整理/">工作笔记整理</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/25/NodeJs/">NodeJs</a>
           </li>
         
       </ul>
