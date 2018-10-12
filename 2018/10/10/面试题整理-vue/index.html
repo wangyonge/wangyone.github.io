@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="什么是MVVMMVVM是Model-View-ViewModeld的缩写.MVVM是一种设计思想.  Model层代表数据模型,也可以在Model中定义数据修改和操作的业务逻辑, View层代表UI组件,负责将数据模型转化成UI展现出来, ViewModel是同步View和Model的对象.在MVVM架构下,View和Model之间并没有直接的联系,而是通过ViewModel进行交互,Model和">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-12T01:11:24.995Z">
+<meta property="og:updated_time" content="2018-10-12T03:51:00.665Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试题整理-vue">
 <meta name="twitter:description" content="什么是MVVMMVVM是Model-View-ViewModeld的缩写.MVVM是一种设计思想.  Model层代表数据模型,也可以在Model中定义数据修改和操作的业务逻辑, View层代表UI组件,负责将数据模型转化成UI展现出来, ViewModel是同步View和Model的对象.在MVVM架构下,View和Model之间并没有直接的联系,而是通过ViewModel进行交互,Model和">
@@ -59,7 +59,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -196,16 +196,46 @@
 <li>vue的历史记录: history记录中向前或者后退多少步</li>
 </ul>
 <h4 id="v-show和v-if指令的异同点"><a href="#v-show和v-if指令的异同点" class="headerlink" title="v-show和v-if指令的异同点"></a>v-show和v-if指令的异同点</h4><ul>
+<li>实现手段<ul>
 <li>v-show指令是通过修改元素的display属性为显示或隐藏</li>
 <li>v-if指令是直接销毁和重建DOM达到让元素显示和隐藏的效果</li>
 </ul>
+</li>
+<li>编译过程<ul>
+<li>v-if切换有一个局部编译/卸载的过程,切换过程中合适地销毁和重建内部的事件监听和子组件<br>v-show只是简单的css切换</li>
+</ul>
+</li>
+<li>编译条件<ul>
+<li>v-if是惰性的,如果初始条件为假,则什么也不做;只有在条件第一次变成真的时候才会开始局部编译(编译被缓存?编译被缓存后,然后再切换的时候进行局部卸载);</li>
+<li>v-show是在任何条件下(首次条件是否为真)都被编译,然后被缓存,而且DOM元素保留</li>
+</ul>
+</li>
+<li>性能消耗<ul>
+<li>v-if有更高的切换消耗</li>
+<li>v-show有更高的初始渲染消耗</li>
+</ul>
+</li>
+<li>使用场景<ul>
+<li>v-if适合运营条件不大可能改变</li>
+<li>v-show适合频繁切换</li>
+</ul>
+</li>
+</ul>
 <h4 id="如何让css只在当前组件中起作用"><a href="#如何让css只在当前组件中起作用" class="headerlink" title="如何让css只在当前组件中起作用"></a>如何让css只在当前组件中起作用</h4><p>在当前组件的style标签中添加scoped属性</p>
 <h4 id="lt-keep-alive-gt-lt-keep-alive-gt-的作用"><a href="#lt-keep-alive-gt-lt-keep-alive-gt-的作用" class="headerlink" title="&lt;keep-alive&gt;&lt;/keep-alive&gt;的作用"></a>&lt;keep-alive&gt;&lt;/keep-alive&gt;的作用</h4><p>使用该标签包裹动态组件时,会缓存<em>不活动</em>的组件实例,主要用于保留组件状态或避免重新渲染<br>eg: 用户在列表页查看详情时会频繁执行:详情-&gt;返回列表-&gt;详情-&gt;返回列表,在此,列表和详情都是一个频率很高的页面,就可以使用&lt;keep-alive&gt;&lt;/keep-alive&gt;进行缓存列表,这样用户在返回列表时就可以快速从缓存中渲染,而不是重新渲染.</p>
+<h4 id="vue-cli项目目录中src目录中每个文件夹和文件的作用"><a href="#vue-cli项目目录中src目录中每个文件夹和文件的作用" class="headerlink" title="vue-cli项目目录中src目录中每个文件夹和文件的作用"></a>vue-cli项目目录中src目录中每个文件夹和文件的作用</h4><ul>
+<li>assets: 放置静态资源</li>
+<li>components: 放置组件</li>
+<li>router: 定义路由相关的配置</li>
+<li>view: 视图</li>
+<li>app.vue: 应用主组件</li>
+<li>main.js: 入口文件</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/10/面试题整理-vue/" data-id="cjn5c1kfj0008rsvcwz2cm496" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/10/面试题整理-vue/" data-id="cjn5c1kfj0008rsvcwz2cm496" class="article-share-link">Share</a>
       
       
     </footer>
@@ -215,7 +245,7 @@
 <nav id="article-nav">
   
     <a href="/2018/10/12/html代码实现一些符号/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           html代码实现一些符号
@@ -225,7 +255,7 @@
   
   
     <a href="/2018/05/29/react笔记整理/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">react笔记整理</div>
     </a>
   
@@ -248,7 +278,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li></ul>
     </div>
@@ -258,7 +288,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
