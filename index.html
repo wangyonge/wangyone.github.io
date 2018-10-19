@@ -55,7 +55,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -65,6 +65,48 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-原生js整理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/18/原生js整理/" class="article-date">
+  <time datetime="2018-10-18T01:35:23.000Z" itemprop="datePublished">2018-10-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/18/原生js整理/">原生js整理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="js事件机制"><a href="#js事件机制" class="headerlink" title="js事件机制"></a>js事件机制</h4><ul>
+<li>点击屏幕上一个按钮,事件是如何传播的?<br>捕获, 冒泡</li>
+</ul>
+<h4 id="js-bind-实现机制"><a href="#js-bind-实现机制" class="headerlink" title="js bind 实现机制"></a>js bind 实现机制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 代码来自书籍《JavaScript模式》</span><br><span class="line">if (typeof Function.prototype.bind === &apos;undefined&apos;) &#123;</span><br><span class="line">  Function.prototype.bind = function (thisArgs) &#123;</span><br><span class="line">    var fn = this,</span><br><span class="line">        slice = Array.prototype.slice,</span><br><span class="line">        args = slice.call(arguments, 1)</span><br><span class="line">    return function () &#123;</span><br><span class="line">      return fn.apply(thisArgs, args.concat(slice.call(arguments)))</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="实现vue中的on-emit-off-once-手写代码"><a href="#实现vue中的on-emit-off-once-手写代码" class="headerlink" title="实现vue中的on, emit, off, once, 手写代码"></a>实现vue中的on, emit, off, once, 手写代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">// 参照vue源码实现</span><br><span class="line">var EventEmiter = function () &#123;</span><br><span class="line">  this._events = &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">EventEmiter.prototpye.on = function (event, cb) &#123;</span><br><span class="line">  if (Array.isArray(event)) &#123;</span><br><span class="line">    for (let i = 0, l = event.length; i &lt; l; i++) &#123;</span><br><span class="line">      this.on(event[i], cb)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    (this._events[event] || (this._events[event] = [])).push(cb)</span><br><span class="line">  &#125;</span><br><span class="line">  return this</span><br><span class="line">&#125;</span><br><span class="line">EventEmiter.prototype.once = function (event, cb) &#123;</span><br><span class="line">  function on () &#123;</span><br><span class="line">    this.off(event, cb)</span><br><span class="line">    cb.apply(this, arguments)</span><br><span class="line">  &#125;</span><br><span class="line">  on.fn = cb</span><br><span class="line">  this.on(event, on)</span><br><span class="line">  return this</span><br><span class="line">&#125;</span><br><span class="line">EventEmiter.prototype.off = function (event, cb) &#123;</span><br><span class="line">  if (!arguments.length) &#123;</span><br><span class="line">    this._events = Object.create(null)</span><br><span class="line">    return this</span><br><span class="line">  &#125;</span><br><span class="line">  if (Array.isArray(event)) &#123;</span><br><span class="line">    for (let i = 0, l = event.length; i &lt; l; i++) &#123;</span><br><span class="line">      this.off(event[i], cb)</span><br><span class="line">    &#125;</span><br><span class="line">    return this</span><br><span class="line">  &#125;</span><br><span class="line">  if (!cb) &#123;</span><br><span class="line">    this._events[event] = null</span><br><span class="line">    return this</span><br><span class="line">  &#125;</span><br><span class="line">  if (cb) &#123;</span><br><span class="line">    let cbs = this.length</span><br><span class="line">    while(i--) &#123;</span><br><span class="line">      if (cb === cbs[i] || cb === cb[i].fn) &#123;</span><br><span class="line">        cbs.splice(i, l)</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return this</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">EventAEmiter.prototype.emit = function (event) &#123;</span><br><span class="line">  let cbs = this._event[event]</span><br><span class="line">  let args = Array.prototype.slice.call(arguments, 1)</span><br><span class="line">  if (cbs) &#123;</span><br><span class="line">    for (let i = 0, l = cbs.length; i &lt; l; i++) &#123;</span><br><span class="line">      cbs[i].apply(this.args)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Object-prototype-toString-call-方法"><a href="#Object-prototype-toString-call-方法" class="headerlink" title="Object.prototype.toString.call()方法"></a>Object.prototype.toString.call()方法</h4><p>使用Object.prototype上的原生toString()方法判断数据类型，使用方法如下： Object.prototype.toString.call(value)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">// 1.判断基本类型</span><br><span class="line">Object.prototype.toString.call(null) // [object Null]</span><br><span class="line">Object.prototype.toString.call(undefined) // [object Undefined]</span><br><span class="line">Object.prototpye.toString.call(&apos;abc&apos;) // [object String]</span><br><span class="line">Object.prototype.toString.call(123) // [object Number]</span><br><span class="line">Object.prototype.toString.call(true) // [object Boolean]  </span><br><span class="line"></span><br><span class="line">// 2.判断原生引用类型</span><br><span class="line">// 函数类型</span><br><span class="line">function fn () &#123;</span><br><span class="line">  console.log(&apos;test&apos;)</span><br><span class="line">&#125;</span><br><span class="line">Object.prototype..toString.call(fn) // [object Function]</span><br><span class="line">// 日期类型</span><br><span class="line">var date = new Date()</span><br><span class="line">Onject.prototype.toString.call(date) // [object Date]</span><br><span class="line">// 数组类型</span><br><span class="line">var arr = [1, 2, 3]</span><br><span class="line">Object.prototype.toString.call(arr) // [object Array]</span><br><span class="line">// 正则表达式</span><br><span class="line">var reg = /[hbc]at/gi</span><br><span class="line">Object.prototype.toString.call(reg) // [object RegExp]</span><br><span class="line">// 自定义类型</span><br><span class="line">function Person (name, age) &#123;</span><br><span class="line">  this.name = name</span><br><span class="line">  this.age = age</span><br><span class="line">&#125;</span><br><span class="line">var people = new Person(&apos;Lily&apos;, 20)</span><br><span class="line">Object.prototype.toString.call(people) // [object Object]</span><br><span class="line">// 很明显这种方法不能准确判断people是Person的实例,而只能用instanceof 操作符来进行判断</span><br><span class="line">console.log(people instanceof Person) // true</span><br><span class="line"></span><br><span class="line">// 3. 判断原生Json对象</span><br><span class="line">var isNativeJson = window.JSON &amp;&amp; Object.prototype.toString.call(JSON)</span><br><span class="line">console.log(isNativeJson)</span><br><span class="line">// 输出结果为 [object JSON],说明JSON是原生的,否则不是;</span><br><span class="line">// 注意: Object.prototype.toString()本身是允许被修改的,而我们目前所讨论的关于Object.prototype.toString()这个方法的应用都是假设toString()方法未被修改为前提的</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/18/原生js整理/" data-id="cjnfruo0200016gvccj0tj1vr" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-html代码实现一些符号" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -154,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/12/html代码实现一些符号/" data-id="cjn5c1kfd0004rsvcrjyk2xf5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/12/html代码实现一些符号/" data-id="cjnfruo0400026gvcgn8y5unq" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -345,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/10/面试题整理-vue/" data-id="cjn5c1kfj0008rsvcwz2cm496" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/10/面试题整理-vue/" data-id="cjnfruo0w00096gvcapuwxo0s" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -437,7 +479,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/29/react笔记整理/" data-id="cjn5c1kff0005rsvccynd4674" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/29/react笔记整理/" data-id="cjnfruo0u00086gvcgbe4mcj0" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -561,7 +603,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/18/css布局/" data-id="cjn5c1kfb0002rsvcdcyjbk8k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/05/18/css布局/" data-id="cjnfrunzx00006gvcmvrlmstb" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -680,7 +722,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/vue基础知识整理/" data-id="cjn5c1kfh0006rsvcvv7rzfoa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/25/vue基础知识整理/" data-id="cjnfruo0800056gvcxyb232dd" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -832,7 +874,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/Git命令/" data-id="cjn5c1kf80001rsvcv133z9aa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/25/Git命令/" data-id="cjnfruo0600036gvcbk57jvr1" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -892,7 +934,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/工作笔记整理/" data-id="cjn5c1kfi0007rsvctzk30odx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/25/工作笔记整理/" data-id="cjnfruo0a00066gvcvm79k9w0" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -979,7 +1021,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/NodeJs/" data-id="cjn5c1kf20000rsvca3gihygf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/25/NodeJs/" data-id="cjnfruo0e00076gvcacs2df4g" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -1039,7 +1081,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/24/hexo基本命令/" data-id="cjn5c1kfc0003rsvci0ypzjr0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/01/24/hexo基本命令/" data-id="cjnfruo0700046gvc2cwjpxrf" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -1065,7 +1107,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li></ul>
     </div>
@@ -1075,9 +1117,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/10/18/原生js整理/">原生js整理</a>
+          </li>
         
           <li>
             <a href="/2018/10/12/html代码实现一些符号/">html代码实现一些符号</a>
@@ -1093,10 +1139,6 @@
         
           <li>
             <a href="/2018/05/18/css布局/">css布局</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/25/vue基础知识整理/">vue基础知识整理</a>
           </li>
         
       </ul>
