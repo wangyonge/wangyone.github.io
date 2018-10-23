@@ -66,6 +66,86 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-面向对象总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/23/面向对象总结/" class="article-date">
+  <time datetime="2018-10-23T02:54:52.000Z" itemprop="datePublished">2018-10-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/23/面向对象总结/">面向对象总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h4><p> 对象继承的所有原型对象</p>
+<h4 id="什么类型的对象既有prototype属性，又有proto属性"><a href="#什么类型的对象既有prototype属性，又有proto属性" class="headerlink" title="什么类型的对象既有prototype属性，又有proto属性"></a>什么类型的对象既有prototype属性，又有<strong>proto</strong>属性</h4><p>函数类型的对象</p>
+<h4 id="直接继承Object-prototype-的对象有哪几种？"><a href="#直接继承Object-prototype-的对象有哪几种？" class="headerlink" title="直接继承Object.prototype 的对象有哪几种？"></a>直接继承Object.prototype 的对象有哪几种？</h4><p>new Object、{}、Math、函数.prototype(显示原型)</p>
+<h4 id="instanceof运算符规则"><a href="#instanceof运算符规则" class="headerlink" title="instanceof运算符规则"></a>instanceof运算符规则</h4><p>判断左边对象的原型链中有没有右边构造函数的显示原型对象</p>
+<h4 id="for-in-语句遍历对象时，继承的属性能不能遍历出来"><a href="#for-in-语句遍历对象时，继承的属性能不能遍历出来" class="headerlink" title="for in 语句遍历对象时，继承的属性能不能遍历出来"></a>for in 语句遍历对象时，继承的属性能不能遍历出来</h4><p>能<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Object.prototype.it=&quot;科技&quot;;</span><br><span class="line">       var obj=&#123;</span><br><span class="line">           value:1</span><br><span class="line">       &#125;</span><br><span class="line">       for(var key in obj)&#123;</span><br><span class="line">           console.log(key);</span><br><span class="line">           ///打印结果：value 、it</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="in运算符作用"><a href="#in运算符作用" class="headerlink" title="in运算符作用"></a>in运算符作用</h4><p>判断一个对象能否使用某个属性</p>
+<h4 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h4><p>删除对象的某个属性</p>
+<h4 id="hasOwnProperty和propertyIsEnumberable的异同"><a href="#hasOwnProperty和propertyIsEnumberable的异同" class="headerlink" title="hasOwnProperty和propertyIsEnumberable的异同"></a>hasOwnProperty和propertyIsEnumberable的异同</h4><p>前者只判断一个对象<strong>自己</strong>有没有某个属性，<br>而后者还要判断该对象的属性是不是可枚举的</p>
+<h4 id="函数的length属性和arguments对象的length属性有什么区别？"><a href="#函数的length属性和arguments对象的length属性有什么区别？" class="headerlink" title="函数的length属性和arguments对象的length属性有什么区别？"></a>函数的length属性和arguments对象的length属性有什么区别？</h4><p>函数的length是用来获取形参个数的<br>arguments的length属性是用来获取实参个数的</p>
+<h4 id="实例成员（静态成员）"><a href="#实例成员（静态成员）" class="headerlink" title="实例成员（静态成员）"></a>实例成员（静态成员）</h4><p>添加给类（构造函数）的属性和方法</p>
+<h4 id="实例成员"><a href="#实例成员" class="headerlink" title="实例成员"></a>实例成员</h4><p>添加给实例自己的属性和方法，以及原型对象中的属性和方法</p>
+<h2 id="预解析"><a href="#预解析" class="headerlink" title="预解析"></a>预解析</h2><h4 id="预解析都做了什么？"><a href="#预解析都做了什么？" class="headerlink" title="预解析都做了什么？"></a>预解析都做了什么？</h4><ul>
+<li>变量声明</li>
+<li>函数声明</li>
+<li>语法检测<h4 id="预解析时变量与变量重名是如何处理"><a href="#预解析时变量与变量重名是如何处理" class="headerlink" title="预解析时变量与变量重名是如何处理"></a>预解析时变量与变量重名是如何处理</h4>后面的忽略<h4 id="函数与函数重名时"><a href="#函数与函数重名时" class="headerlink" title="函数与函数重名时"></a>函数与函数重名时</h4>保留后面的函数<h4 id="函数执行时内部是否也存在预解析"><a href="#函数执行时内部是否也存在预解析" class="headerlink" title="函数执行时内部是否也存在预解析"></a>函数执行时内部是否也存在预解析</h4>存在<h4 id="函数执行时，形参赋值在预解析之前还是之后"><a href="#函数执行时，形参赋值在预解析之前还是之后" class="headerlink" title="函数执行时，形参赋值在预解析之前还是之后"></a>函数执行时，形参赋值在预解析之前还是之后</h4>之前<h4 id="写在非代码块中的函数声明式会被预解析吗"><a href="#写在非代码块中的函数声明式会被预解析吗" class="headerlink" title="写在非代码块中的函数声明式会被预解析吗"></a>写在非代码块中的函数声明式会被预解析吗</h4>在最新的浏览器中，<strong>函数名</strong>会被预解析<br>老版本浏览器（除了火狐），函数整体会被预解析<h4 id="函数声明式的特点"><a href="#函数声明式的特点" class="headerlink" title="函数声明式的特点"></a>函数声明式的特点</h4></li>
+<li>以function开头定义，要么在全局定义，要么直接嵌套在另一个函数中</li>
+<li>会被预解析</li>
+<li>必须有名字<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function shengMingShi()&#123;</span><br><span class="line">	(function()&#123;</span><br><span class="line">		function shengMingShi()&#123;&#125;</span><br><span class="line">		&#125;)();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="函数表达式的特点"><a href="#函数表达式的特点" class="headerlink" title="函数表达式的特点"></a>函数表达式的特点</h4><ul>
+<li>要么在表达式中，要么在语句中</li>
+<li>不会被预解析</li>
+<li>名字可有可无</li>
+<li>函数名只能在函数内部使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var biaoDaShi=function()&#123;&#125;;</span><br><span class="line">biaoDaShi(function biaoDaShi()&#123;&#125;);</span><br><span class="line">(function biaoDaShi&#123;&#125;());</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="特殊情况的函数表达式"><a href="#特殊情况的函数表达式" class="headerlink" title="特殊情况的函数表达式"></a>特殊情况的函数表达式</h4><ul>
+<li>写在非函数代码块中</li>
+<li>名字是必须的</li>
+<li>名字会被预解析</li>
+<li>函数名可以在外面使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	function teShuBiaoDaShi()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><h4 id="什么是作用域"><a href="#什么是作用域" class="headerlink" title="什么是作用域"></a>什么是作用域</h4><p>变量的有效范围</p>
+<h4 id="函数作用域规则"><a href="#函数作用域规则" class="headerlink" title="函数作用域规则"></a>函数作用域规则</h4><p>只有函数可以划分变量的作用域</p>
+<h4 id="块级作用域规则"><a href="#块级作用域规则" class="headerlink" title="块级作用域规则"></a>块级作用域规则</h4><p>凡是代码块就可以划分变量的作用域</p>
+<h4 id="词法作用域（静态作用域）规则"><a href="#词法作用域（静态作用域）规则" class="headerlink" title="词法作用域（静态作用域）规则"></a>词法作用域（静态作用域）规则</h4><p>访问一个变量，优先在当前执行环境中去找，找不到则去产生该执行环境的环境中去找，以此类推，直到全局执行环境</p>
+<h4 id="全局变量的概念和定义方式"><a href="#全局变量的概念和定义方式" class="headerlink" title="全局变量的概念和定义方式"></a>全局变量的概念和定义方式</h4><ul>
+<li>概念：在任何地方都可以使用的变量</li>
+<li>定义方式：在函数外声明的变量，或者没有var定义的变量（这种定义变量的方式以后会废弃）<h4 id="局部变量的概念和定义方式"><a href="#局部变量的概念和定义方式" class="headerlink" title="局部变量的概念和定义方式"></a>局部变量的概念和定义方式</h4></li>
+<li>概念:只在声明的地方可以使用的变量</li>
+<li>定义方式：在函数内声明的变量<h4 id="变量的生命周期"><a href="#变量的生命周期" class="headerlink" title="变量的生命周期"></a>变量的生命周期</h4>变量从定义开始，到释放结束，中间存活的过程<h4 id="全局变量的生命周期"><a href="#全局变量的生命周期" class="headerlink" title="全局变量的生命周期"></a>全局变量的生命周期</h4>从定义开始，到页面卸载 消亡，中间存活的过程<h4 id="局部变量的生命周期"><a href="#局部变量的生命周期" class="headerlink" title="局部变量的生命周期"></a>局部变量的生命周期</h4>一般情况下，是从函数执行后，变量的声明开始，到函数函数执行完毕结束；但也有特殊情况，可能存在闭包引用了这个变量，那么这个变量的生命周期和闭包一样长<h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4>可访问非自身局部变量的函数（函数内的函数）</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/23/面向对象总结/" data-id="cjnl50y210006a8vcqosdo8h0" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-原生js整理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/18/原生js整理/" class="article-date">
@@ -98,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/18/原生js整理/" data-id="cjnfruo0200016gvccj0tj1vr" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/18/原生js整理/" data-id="cjnl50y2y0007a8vcit9n7mxx" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -196,7 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/12/html代码实现一些符号/" data-id="cjnfruo0400026gvcgn8y5unq" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/12/html代码实现一些符号/" data-id="cjnl50y1r0001a8vc3zp0uho7" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -387,7 +467,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/10/面试题整理-vue/" data-id="cjnfruo0w00096gvcapuwxo0s" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/10/10/面试题整理-vue/" data-id="cjnl50y3i000aa8vc3wj4ftq2" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -479,7 +559,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/29/react笔记整理/" data-id="cjnfruo0u00086gvcgbe4mcj0" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/29/react笔记整理/" data-id="cjnl50y2y0009a8vc8jirldrd" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -603,7 +683,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/18/css布局/" data-id="cjnfrunzx00006gvcmvrlmstb" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/05/18/css布局/" data-id="cjnl50y1r0002a8vcmkaxka4e" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -722,7 +802,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/vue基础知识整理/" data-id="cjnfruo0800056gvcxyb232dd" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/25/vue基础知识整理/" data-id="cjnl50y1r0003a8vcvezlcdtg" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -874,7 +954,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/Git命令/" data-id="cjnfruo0600036gvcbk57jvr1" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/25/Git命令/" data-id="cjnl50y210005a8vcq3m3d6np" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -934,7 +1014,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/工作笔记整理/" data-id="cjnfruo0a00066gvcvm79k9w0" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/25/工作笔记整理/" data-id="cjnl50y210004a8vc674735cp" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -1021,67 +1101,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/NodeJs/" data-id="cjnfruo0e00076gvcacs2df4g" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hexo基本命令" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/01/24/hexo基本命令/" class="article-date">
-  <time datetime="2018-01-24T06:27:46.000Z" itemprop="datePublished">2018-01-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/24/hexo基本命令/">hexo基本命令</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="日常更新"><a href="#日常更新" class="headerlink" title="日常更新"></a>日常更新</h4><ul>
-<li>本地新建文件名:hexo new “博客名”</li>
-<li>生成文档: hexo g -d</li>
-<li>运行本地服务器:hexo s -g ,浏览器中<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a></li>
-<li>同步到github:hexo d -g</li>
-</ul>
-<h4 id="卸载hexo"><a href="#卸载hexo" class="headerlink" title="卸载hexo"></a>卸载hexo</h4><ul>
-<li>3.0.0版本执行:npm uninstall hexo-cli-g,</li>
-<li>旧版本执行:npm uninstall hexo -g</li>
-</ul>
-<h4 id="安装旧版本hexo"><a href="#安装旧版本hexo" class="headerlink" title="安装旧版本hexo"></a>安装旧版本hexo</h4><ul>
-<li>先卸载当前版本,以2.8.3为例,执行:npm uninstall hexo@2.8.3 -g,再初始化并安装依赖和插件</li>
-</ul>
-<h4 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h4><ul>
-<li>npm install hexo-cli -g</li>
-<li>hexo init blog</li>
-<li>cd blog</li>
-<li>npm install</li>
-<li>hexo server</li>
-</ul>
-<h4 id="域名绑定"><a href="#域名绑定" class="headerlink" title="域名绑定"></a>域名绑定</h4><p>如果你不想使用yourusername.github.io，也可以绑定自己的域名，将域名的CNAME指向yourusername.github.io，然后在github下面新建一个CNAME文件，里面写上你的域名，然后就能通过域名直接访问到yourusername.github.io了。</p>
-<h4 id="安装Next主题"><a href="#安装Next主题" class="headerlink" title="安装Next主题"></a>安装Next主题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd your-hexo-site</span><br><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//feed插件</span><br><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">//站点地图</span><br><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line">//百度站点地图</span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
-<h4 id="SEO优化"><a href="#SEO优化" class="headerlink" title="SEO优化"></a>SEO优化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% block title %&#125; &#123;&#123; config.title &#125;&#125; - &#123;&#123; theme.description &#125;&#125; &#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/24/hexo基本命令/" data-id="cjnfruo0700046gvc2cwjpxrf" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/25/NodeJs/" data-id="cjnl50y2y0008a8vcb6umnnyv" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -1092,6 +1112,11 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
+  </nav>
 
 </section>
         
@@ -1122,6 +1147,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/23/面向对象总结/">面向对象总结</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/18/原生js整理/">原生js整理</a>
           </li>
         
@@ -1135,10 +1164,6 @@
         
           <li>
             <a href="/2018/05/29/react笔记整理/">react笔记整理</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/18/css布局/">css布局</a>
           </li>
         
       </ul>
